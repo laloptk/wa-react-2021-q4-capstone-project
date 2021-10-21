@@ -1,0 +1,12 @@
+.card {
+  &__title {
+    h3 {
+      text-align: center;
+      a {
+        font-size: 25px;
+        text-decoration: none;
+        color: #000000;
+      }
+    }
+  }
+}
