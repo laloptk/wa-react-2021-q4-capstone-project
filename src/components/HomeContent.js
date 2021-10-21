@@ -76,29 +76,27 @@ const HomeContent = (props) => {
 
     return(
         <div className="content">
-            <div className="container">
-                <Section sectionName="home-slider" sectionTitle="The Best of the Best...">
-                    <Slider {...sliderSettings}>
-                        {
-                            banners.map((banner) => {
-                                return <Card {...banner } key={banner.id}/>
-                            })
-                        }
-                    </Slider>
-                </Section>
-                <Section sectionName="home-carousel" sectionTitle="Featured Categories">
-                    <Slider {...carouselSettings}>
-                        {
-                            carousel.map((carouselItem) => {
-                                return <Card {...carouselItem } key={carouselItem.id}/>
-                            })
-                        }
-                    </Slider>
-                </Section>
-                <Section sectionName="home-grid" sectionTitle="Featured Products">
-                    <Grid title="Featured Products" products={featuredProducts} />
-                </Section>
-            </div>
+            <Section sectionName="home-slider" sectionTitle="The Best of the Best...">
+                <Slider {...sliderSettings}>
+                    {
+                        banners.map((banner) => {
+                            return <Card {...banner } key={banner.id}/>
+                        })
+                    }
+                </Slider>
+            </Section>
+            <Section sectionName="home-carousel" sectionTitle="Featured Categories">
+                <Slider {...carouselSettings}>
+                    {
+                        carousel.map((carouselItem) => {
+                            return <Card {...carouselItem } key={carouselItem.id}/>
+                        })
+                    }
+                </Slider>
+            </Section>
+            <Section sectionName="home-grid" sectionTitle="Featured Products">
+                <Grid title="Featured Products" products={featuredProducts} />
+            </Section>
         </div>
     )
 }

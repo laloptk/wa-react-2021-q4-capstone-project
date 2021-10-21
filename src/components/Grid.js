@@ -1,13 +1,18 @@
 import Card from "./Card";
+import Button from "./Button";
 
 const Grid = (props) => {    
     return(
-        <div className="grid" >            
-            {
-                props.products.map((gridItem) => {
-                    return <Card {...gridItem } key={gridItem.id}/>
-                })
-            }        
+        
+        <div className="grid" > 
+            <div class="grid__wrap">           
+                {
+                    props.products.map((gridItem) => {
+                        return <Card {...gridItem } key={gridItem.id}/>
+                    })
+                }        
+            </div>
+            <Button link="#" text="View All Products" btnModifier="btn--ghost" />
         </div>
     )
 }

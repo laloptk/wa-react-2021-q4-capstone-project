@@ -1,7 +1,12 @@
 .grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  text-align: center;
+
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
 
   .card {
     width: 31%;
