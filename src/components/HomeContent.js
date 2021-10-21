@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import Card from "./Card";
 import Grid from "./Grid";
 import Section from "./Section";
 import { fetchData } from "../utils/helpers";
+import Slider from "react-slick";
 
 const HomeContent = (props) => {
     const [banners, setBanners] = useState([]);
@@ -12,18 +12,44 @@ const HomeContent = (props) => {
     
     const sliderSettings = {
         dots: true,
+        autoplay: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1        
     };
 
     const carouselSettings = {
         dots: true,
         infinite: true,
+        lazyLoad: true,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+        ]
     };
 
     const getData = async () => {

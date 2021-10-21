@@ -8,6 +8,14 @@
     margin-right: 2%;
     margin-bottom: 20px;
 
+    @media only screen and (max-width: $bp-desktop) {
+      width: 48%;
+    }
+
+    @media only screen and (max-width: $bp-mobile) {
+      width: 100%;
+    }
+
     &:last-child {
       margin-right: 0;
     }
