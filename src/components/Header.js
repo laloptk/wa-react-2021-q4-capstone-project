@@ -7,7 +7,7 @@ const Header = (props) => {
             <div className="container">
                 <div className="header__wrap">
                     <div className="site-logo">
-                        <a href="/">My EComm</a>
+                        <a href="/">furn<span>e-tour</span></a>
                     </div>
                     <div className="header-nav">
                         <div className="product-search">

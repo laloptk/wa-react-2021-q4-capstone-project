@@ -14,10 +14,16 @@
 
   .site-logo {
     a {
-      font-size: 40px;
-      color: $c-black;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 58px;
+      color: $c-darkGray;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 300;
+
+      span {
+        font-weight: 700;
+        color: $c-black;
+      }
     }
   }
 
