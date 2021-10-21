@@ -1,0 +1,23 @@
+.grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .card {
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+
+    @media only screen and (max-width: $bp-desktop) {
+      width: 48%;
+    }
+
+    @media only screen and (max-width: $bp-mobile) {
+      width: 100%;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
