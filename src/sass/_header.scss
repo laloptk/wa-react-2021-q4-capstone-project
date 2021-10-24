@@ -1,5 +1,6 @@
 .header {
   background-color: $c-lightGray;
+  border-bottom: 2px solid $c-darkGray;
   &__wrap {
     display: flex;
     justify-content: space-between;
@@ -21,7 +22,7 @@
       font-weight: 300;
 
       span {
-        font-weight: 700;
+        font-weight: 500;
         color: $c-black;
       }
     }
