@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import Grid from "./Grid";
 import Sidebar from "./Sidebar";
+import Pagination from './Pagination';
 import { fetchData } from '../utils/helpers';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const ListingContent = (props) => {
     const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
 
     const getData = async () => {
         const productsData = await fetchData('./products.json');
@@ -24,10 +22,6 @@ const ListingContent = (props) => {
 
     const handleFilters = (filter) => {
         const filterPos = filters.indexOf(filter);
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
         
         if(filterPos === -1) {
             setFilters([...filters, filter]);
@@ -51,15 +45,12 @@ const ListingContent = (props) => {
                     <h1>Products</h1>
                 </div>
                 <div className="products-listing__wrap">
-                    <div className="products-listing__content">
-                        {
-                            isLoading 
-                            ? <FontAwesomeIcon icon={faSpinner} pulse />
-                            : <Grid products={ filters.length > 0 ? filterData() : products} />
-                        }
-                    </div>
                     <div className="products-listing__sidebar">
                         <Sidebar setCategoriesFilters={handleFilters} />
+                    </div>
+                    <div className="products-listing__content">
+                        <Grid products={ filters.length > 0 ? filterData() : products} />
+                        <Pagination start={1} size={5} totalPages={20} />                       
                     </div>
                 </div>
             </div>

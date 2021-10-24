@@ -1,10 +1,28 @@
 .products-listing {
+  min-height: 80vh;
+
   &__wrap {
     display: flex;
+
+    @media only screen and (max-width: $bp-tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    h1 {
+      text-align: center;
+      margin: 100px 0 50px;
+      font-size: 82px;
+    }
   }
 
   &__content {
     width: calc(100% - 360px);
+
+    @media only screen and (max-width: $bp-tablet) {
+      width: 100%;
+    }
   }
 
   .fa-spinner {

@@ -115,25 +115,25 @@ In this assignment, you will continue working on your Ecommerce Store. It should
 
 ### Requirements
 
-1. Add a button with the text “View all products” below your Featured Products Grid on the Home Page.
-2. Create a new component for your Product List that returns this React element for now: `<h1>This is the Product List Page</h1>`
-3. Modify your App component to implement a conditional rendering logic to navigate through your pages. In this case, you will only need to be able to navigate from Home Page to Product List Page and from Product List Page to Home Page.
-4. Add an event handler to your “View all products” button so you can navigate to your Product List Page when you click on it.
-5. Test your conditional rendering logic to navigate to the Product List Page. After clicking on the “View all products” button, you should see the following message “This is the Product List Page” replacing the Home Page.
+1. ~Add a button with the text “View all products” below your Featured Products Grid on the Home Page.~
+2. ~Create a new component for your Product List that returns this React element for now: `<h1>This is the Product List Page</h1>`~
+3. ~Modify your App component to implement a conditional rendering logic to navigate through your pages. In this case, you will only need to be able to navigate from Home Page to Product List Page and from Product List Page to Home Page.~
+4. ~Add an event handler to your “View all products” button so you can navigate to your Product List Page when you click on it.~
+5. ~Test your conditional rendering logic to navigate to the Product List Page. After clicking on the “View all products” button, you should see the following message “This is the Product List Page” replacing the Home Page.~
 6. Add an event handler to your Ecommerce logo in the header so you can navigate to your Home Page when you click on it.
 7. Test your conditional rendering logic to navigate to the Home Page. After clicking on the Ecommerce logo in the header, you should see your Home Page content, replacing the Product List Page.
 8. Modify your Product List Page component to contain the following blocks:
 
-- 8.1. A **Sidebar** (left or right side, is up to you), it should contain a list of categories from [this mock file](/mocks/en-us/product-categories.json). The elements in this list will work as filters for your products, so, you should render the name of each category and attach to it an empty handler for the onClick event.
+- 8.1. ~A **Sidebar** (left or right side, is up to you), it should contain a list of categories from [this mock file](/mocks/en-us/product-categories.json). The elements in this list will work as filters for your products, so, you should render the name of each category and attach to it an empty handler for the onClick event.~
 - 8.2. A **Grid** of Products from [this mock file](/mocks/en-us/products.json). For each element on this grid, you should show at least the main image of the product, its name, category, and price.
 
 9. Add an event handler to the categories in your sidebar, so when you click on each of them, the products in the grid are filtered. The behavior of this filters should be the following:
 
-- 9.1. By default each category filter should be disabled.
-- 9.2. When you click on the category filter for the first time, that filter will be enabled and applied to the product grid.
+- 9.1. ~By default each category filter should be disabled.~
+- 9.2. ~When you click on the category filter for the first time, that filter will be enabled and applied to the product grid.~
 - 9.3. When the filter is active/enabled, you should apply some styling to the selected category so it’s easier to distinguish between active and inactive states.
-- 9.4. You can have multiple filters enabled at the same time, so when this happens, the products that will be shown in the grid should have at least one of the categories from the active filters.
-- 9.5. To disable a filter, you will have to click on it and it should be removed from the active filters.
+- 9.4. ~You can have multiple filters enabled at the same time, so when this happens, the products that will be shown in the grid should have at least one of the categories from the active filters.~
+- 9.5. ~To disable a filter, you will have to click on it and it should be removed from the active filters.~
 
 10. Add pagination controls to the bottom of your list. For now, you just need to create the UI for these elements, you don’t need to implement the pagination logic on your grid yet.
 

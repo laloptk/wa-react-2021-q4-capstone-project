@@ -17,6 +17,14 @@ const Sidebar = (props) => {
     }, []);
 
     const handleClick = (event) => {
+        let classExists = event.target.classList.contains("active");
+        
+        if(!classExists) {
+            event.target.classList.add("active");
+        } else {
+            event.target.classList.remove("active");
+        }
+
         props.setCategoriesFilters(event.target.dataset.id);
     }
     

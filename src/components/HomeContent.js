@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import Grid from "./Grid";
+import Button from "./Button";
 import Section from "./Section";
 import { fetchData } from "../utils/helpers";
 import Slider from "react-slick";
@@ -96,6 +97,7 @@ const HomeContent = (props) => {
             </Section>
             <Section sectionName="home-grid" sectionTitle="Featured Products">
                 <Grid title="Featured Products" products={featuredProducts} />
+                <Button link="/list" text="View All Products" btnModifier="btn--ghost" />
             </Section>
         </div>
     )
