@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const pageSlug = window.location.pathname;
-   console.log(pageSlug);
+  
   return (
     <div className="App">
       <Header />

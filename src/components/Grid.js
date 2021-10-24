@@ -2,10 +2,9 @@ import Card from "./Card";
 import Button from "./Button";
 
 const Grid = (props) => {    
-    return(
-        
+    return(        
         <div className="grid" > 
-            <div class="grid__wrap">           
+            <div className="grid__wrap">           
                 {
                     props.products.map((gridItem) => {
                         return <Card {...gridItem } key={gridItem.id}/>
