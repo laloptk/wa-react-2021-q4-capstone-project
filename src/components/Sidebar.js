@@ -15,9 +15,13 @@ const Sidebar = (props) => {
     useEffect(() => {
         getData();
     }, []);
+
+    const handleClick = (event) => {
+        props.setCategoriesFilters(event.target.dataset.id);
+    }
     
     return (
-        <aside>
+        <aside className="sidebar">
             <div className="sidebar__filters">
                 <ul>
                     {
@@ -26,7 +30,7 @@ const Sidebar = (props) => {
                                 <li 
                                     key={category.id}
                                     data-id={category.id}
-                                    onClick={event => props.setCategoriesFilters(event.target.dataset.id)}
+                                    onClick={ event => handleClick(event) }
                                 >                            
                                     {category.data.name}
                                 </li>

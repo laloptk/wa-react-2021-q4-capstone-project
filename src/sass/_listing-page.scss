@@ -1,0 +1,17 @@
+.products-listing {
+  &__wrap {
+    display: flex;
+  }
+
+  &__content {
+    width: calc(100% - 360px);
+  }
+
+  .fa-spinner {
+    display: block;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 82px;
+    margin: 100px auto;
+  }
+}

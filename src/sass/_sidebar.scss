@@ -1,0 +1,27 @@
+.sidebar {
+  min-width: 340px;
+  margin-left: 20px;
+
+  &__filters {
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      > li {
+        background-color: $c-black;
+        padding: 10px 15px;
+        margin-bottom: 5px;
+        color: $c-white;
+        font-weight: 700;
+        opacity: 0.6;
+        cursor: pointer;
+      }
+    }
+
+    &:before {
+      content: "Filter by category:";
+      font-size: 22px;
+      font-weight: 700;
+    }
+  }
+}

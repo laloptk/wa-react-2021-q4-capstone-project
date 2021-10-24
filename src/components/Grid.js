@@ -4,7 +4,7 @@ import Button from "./Button";
 const Grid = (props) => {    
     return(        
         <div className="grid" > 
-            <div className="grid__wrap">           
+            <div className="grid__wrap">
                 {
                     props.products.map((gridItem) => {
                         return <Card {...gridItem } key={gridItem.id}/>
