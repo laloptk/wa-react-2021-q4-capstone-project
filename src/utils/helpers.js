@@ -17,3 +17,11 @@ export const fetchData = async (file) => {
 
     return false;
 }
+
+export const getCategoryById = (categoryId, categories) => {
+    const categoryObj = categories.find((category)  => {
+        return categoryId === category.id;
+    });
+
+    return categoryObj;
+}

@@ -76,8 +76,8 @@ const HomeContent = (props) => {
     }, []);
 
     return(
-        <div className="content">
-            <Section sectionName="home-slider" sectionTitle="The Best of the Best...">
+        <div className="home">
+            <Section sectionName="home__slider" sectionTitle="The Best of the Best...">
                 <Slider {...sliderSettings}>
                     {
                         banners.map((banner) => {
@@ -86,7 +86,7 @@ const HomeContent = (props) => {
                     }
                 </Slider>
             </Section>
-            <Section sectionName="home-carousel" sectionTitle="Featured Categories">
+            <Section sectionName="home__carousel" sectionTitle="Featured Categories">
                 <Slider {...carouselSettings}>
                     {
                         carousel.map((carouselItem) => {
@@ -95,9 +95,9 @@ const HomeContent = (props) => {
                     }
                 </Slider>
             </Section>
-            <Section sectionName="home-grid" sectionTitle="Featured Products">
+            <Section sectionName="home__grid" sectionTitle="Featured Products">
                 <Grid title="Featured Products" products={featuredProducts} />
-                <Button link="/list" text="View All Products" btnModifier="btn--ghost" />
+                <Button link="/products" text="View All Products" btnModifier="btn--ghost" />
             </Section>
         </div>
     )

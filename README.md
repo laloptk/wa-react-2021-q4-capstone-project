@@ -135,15 +135,15 @@ In this assignment, you will continue working on your Ecommerce Store. It should
 - 9.4. ~You can have multiple filters enabled at the same time, so when this happens, the products that will be shown in the grid should have at least one of the categories from the active filters.~
 - 9.5. ~To disable a filter, you will have to click on it and it should be removed from the active filters.~
 
-10. Add pagination controls to the bottom of your list. For now, you just need to create the UI for these elements, you don’t need to implement the pagination logic on your grid yet.
+10. ~Add pagination controls to the bottom of your list. For now, you just need to create the UI for these elements, you don’t need to implement the pagination logic on your grid yet.~
 
 ### Notes
 
-- You won’t need to implement React Router library to navigate through your pages yet, you will only need to implement some conditional rendering logic to show the component for the page that you want to see.
-- You should implement functional components with hooks
-- Try to keep the use of third-party libraries to the minimum, especially the ones related to the topics covered in our bootcamp. **Please don’t use any components library such as Bootstrap or Material UI.**
-- We want you to create all of your styles from scratch using the styling techniques learned, you can use any of the following styling approaches: Plain CSS with classnames, CSS pre-processors, CSS Modules, or CSS-in-JS (styled-components, emotion, or any other library), is totally up to you!
-- Please make sure that your UI is responsive and all the elements adapt to different screen sizes (Smartphones, Tablet, and Desktop).
+- ~You won’t need to implement React Router library to navigate through your pages yet, you will only need to implement some conditional rendering logic to show the component for the page that you want to see.~
+- ~You should implement functional components with hooks~
+- ~Try to keep the use of third-party libraries to the minimum, especially the ones related to the topics covered in our bootcamp.~ **~Please don’t use any components library such as Bootstrap or Material UI.~**
+- ~We want you to create all of your styles from scratch using the styling techniques learned, you can use any of the following styling approaches: Plain CSS with classnames, CSS pre-processors, CSS Modules, or CSS-in-JS (styled-components, emotion, or any other library), is totally up to you!~
+- ~Please make sure that your UI is responsive and all the elements adapt to different screen sizes (Smartphones, Tablet, and Desktop).~
 - Please make sure that no warnings or errors are logged in the browser console.
 
 ### Evaluation Criteria

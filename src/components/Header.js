@@ -8,7 +8,7 @@ const Header = (props) => {
             <div className="container">
                 <div className="header__wrap">
                     <div className="site-logo">
-                        <Button link="/" text={["furn", <span>e-tour</span>]} buttonModifier="btn-logo"/>
+                        <Button link="/" text={<>furn <span>e-tour</span></>} buttonModifier="btn-logo"/>
                     </div>
                     
                     <div className="header-nav">

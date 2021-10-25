@@ -1,4 +1,8 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   &__title {
     h3 {
       text-align: center;
@@ -8,5 +12,16 @@
         color: $c-black;
       }
     }
+  }
+
+  &__info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__price {
+    color: green;
+    font-weight: 700;
   }
 }

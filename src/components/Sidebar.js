@@ -1,20 +1,4 @@
-import {useState, useEffect} from 'react';
-import { fetchData } from '../utils/helpers';
-
 const Sidebar = (props) => {
-    const [categories, setCategories] = useState([]);
-
-    const getData = async () => {
-        const categoriesData = await fetchData('./product-categories.json');
-
-        if(categoriesData !== false) {
-            setCategories(categoriesData.results);
-        }
-    }
-
-    useEffect(() => {
-        getData();
-    }, []);
 
     const handleClick = (event) => {
         let classExists = event.target.classList.contains("active");
@@ -33,7 +17,7 @@ const Sidebar = (props) => {
             <div className="sidebar__filters">
                 <ul>
                     {
-                        categories.map((category) => {
+                        props.categories.map((category) => {
                             return (
                                 <li 
                                     key={category.id}

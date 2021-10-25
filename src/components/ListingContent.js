@@ -6,13 +6,19 @@ import { fetchData } from '../utils/helpers';
 
 const ListingContent = (props) => {
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState([]);
 
     const getData = async () => {
         const productsData = await fetchData('./products.json');
+        const categoriesData = await fetchData('./product-categories.json');
 
         if(productsData !== false) {
             setProducts(productsData.results);
+        }
+
+        if(categoriesData !== false) {
+            setCategories(categoriesData.results);
         }
     }
 
@@ -46,10 +52,13 @@ const ListingContent = (props) => {
                 </div>
                 <div className="products-listing__wrap">
                     <div className="products-listing__sidebar">
-                        <Sidebar setCategoriesFilters={handleFilters} />
+                        <Sidebar setCategoriesFilters={handleFilters} categories={ categories }/>
                     </div>
                     <div className="products-listing__content">
-                        <Grid products={ filters.length > 0 ? filterData() : products} />
+                        <Grid 
+                            products={ filters.length > 0 ? filterData() : products } 
+                            categories={ categories }
+                        />
                         <Pagination start={1} size={5} totalPages={20} />                       
                     </div>
                 </div>
