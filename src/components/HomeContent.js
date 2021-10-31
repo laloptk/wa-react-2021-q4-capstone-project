@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Grid from "./Grid";
 import Section from "./Section";
+import { useFeaturedBanners } from "../utils/hooks/useFeaturedBanners";
+import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
 import { fetchData } from "../utils/helpers";
 import Slider from "react-slick";
 
 const HomeContent = (props) => {
-    const [banners, setBanners] = useState([]);
-    const [carousel, setCarousel] = useState([]);
+    const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
+    const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
     const [featuredProducts, setFeaturedProducts] = useState([]);
     
     const sliderSettings = {
@@ -54,17 +56,7 @@ const HomeContent = (props) => {
     };
 
     const getData = async () => {
-        const bannersData = await fetchData('./featured-banners.json');
-        const carouselData = await fetchData('./product-categories.json');
         const featuredProductsData = await fetchData('./featured-products.json');
-
-        if(bannersData !== false) {
-            setBanners(bannersData.results);
-        }
-
-        if(carouselData !== false) {
-            setCarousel(carouselData.results);
-        }
 
         if(featuredProductsData !== false) {
             setFeaturedProducts(featuredProductsData.results);
@@ -78,22 +70,30 @@ const HomeContent = (props) => {
     return(
         <div className="home">
             <Section sectionName="home__slider" sectionTitle="The Best of the Best...">
-                <Slider {...sliderSettings}>
-                    {
-                        banners.map((banner) => {
-                            return <Card {...banner } key={banner.id}/>
-                        })
-                    }
-                </Slider>
+                {
+                    bannersLoading
+                    ?   "Loading..."
+                    :   <Slider {...sliderSettings}>
+                            {
+                                banners.results.map((banner) => {
+                                    return <Card {...banner } key={banner.id}/>
+                                })
+                            }
+                        </Slider>
+                }
             </Section>
             <Section sectionName="home__carousel" sectionTitle="Featured Categories">
-                <Slider {...carouselSettings}>
-                    {
-                        carousel.map((carouselItem) => {
-                            return <Card {...carouselItem } key={carouselItem.id}/>
-                        })
-                    }
-                </Slider>
+                {
+                    categoriesLoading 
+                    ? "Loading..."
+                    :   <Slider {...carouselSettings}>
+                            {
+                                categories.results.map((carouselItem) => {
+                                    return <Card {...carouselItem } key={carouselItem.id}/>
+                                })
+                            }
+                        </Slider>
+                }
             </Section>
             <Section sectionName="home__grid" sectionTitle="Featured Products">
                 <Grid title="Featured Products" products={featuredProducts} />
