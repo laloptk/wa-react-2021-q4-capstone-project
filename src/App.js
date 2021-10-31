@@ -1,4 +1,9 @@
 import './style.scss';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import Header from './components/Header';
 import HomeContent from './components/HomeContent';
 import ListingContent from './components/ListingContent';
@@ -7,20 +12,23 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function App() {
-  const pageSlug = window.location.pathname;
-
   return (
     <div className="App">
-      <Header />
-      { 
-        pageSlug === '/' &&
-          <HomeContent />
-      }
-      {
-        pageSlug === '/products' &&
-          <ListingContent />
-      }
-      <Footer />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/products">
+            <ListingContent />
+          </Route>
+          <Route exact path={["/", "/home"]}>
+            <HomeContent />
+          </Route>
+          <Route path="*">
+            Page Not Found
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }

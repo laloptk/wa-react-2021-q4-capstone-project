@@ -1,17 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import Button from './Button';
+import { Link } from "react-router-dom";
 
-const Header = (props) => { 
+const Header = (props) => {     
     return (
         <header className="header">
             <div className="container">
-                <div className="header__wrap">
+                <div className="header__wrap">                    
                     <div className="site-logo">
-                        <Button link="/" text={<>furn<span>e-tour</span></>} buttonModifier="btn-logo"/>
+                        <Link to="/">furn<span>e-tour</span></Link>
                     </div>
                     
                     <div className="header-nav">
+                        <div className="header-nav__main">
+                            <ul>
+                                <li><Link to="/products">Products</Link></li>
+                            </ul>
+                        </div>
                         <div className="product-search">
                             <form>
                                 <input type="text" />
