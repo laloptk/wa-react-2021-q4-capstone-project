@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Button from './Button';
 
 const Header = (props) => { 
     return (
@@ -7,8 +8,9 @@ const Header = (props) => {
             <div className="container">
                 <div className="header__wrap">
                     <div className="site-logo">
-                        <a href="/">My EComm</a>
+                        <Button link="/" text={<>furn<span>e-tour</span></>} buttonModifier="btn-logo"/>
                     </div>
+                    
                     <div className="header-nav">
                         <div className="product-search">
                             <form>

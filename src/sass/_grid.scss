@@ -1,12 +1,18 @@
 .grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  text-align: center;
+
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
 
   .card {
     width: 31%;
     margin-right: 2%;
     margin-bottom: 20px;
+    background-color: $c-lightGray;
 
     @media only screen and (max-width: $bp-desktop) {
       width: 48%;

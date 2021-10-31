@@ -14,21 +14,32 @@ const Card = (props) => {
                 } 
             />
             </a>
+            </div>            
+            <div className="card__title">
+                <h3>
+                    {
+                        <a href={props.href} >
+                            {
+                                props.data.name !== undefined 
+                                ? props.data.name 
+                                : props.data.title
+                            }
+                        </a>
+                    }
+                </h3>             
             </div>
             <div className="card__info">
-                <div className="card__title">
-                    <h3>
-                        {
-                                <a href={props.href} >
-                                    {
-                                        props.data.name !== undefined 
-                                        ? props.data.name 
-                                        : props.data.title
-                                    }
-                                </a>
-                        }
-                    </h3>
-                </div>
+                {   props.data.price !== undefined &&
+                    <div className="card__price">
+                        {`Price: US$${props.data.price}`}
+                    </div> 
+                }
+                {   
+                    props.category !== undefined &&
+                        <div className="card__category">
+                            {`Category: ${props.category.data.name}`}
+                        </div> 
+                }
             </div>
         </div>
     )
