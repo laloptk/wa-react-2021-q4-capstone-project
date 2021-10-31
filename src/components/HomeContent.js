@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Grid from "./Grid";
 import Section from "./Section";
 import { useFeaturedBanners } from "../utils/hooks/useFeaturedBanners";
 import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
-import { fetchData } from "../utils/helpers";
+import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
 import Slider from "react-slick";
 
 const HomeContent = (props) => {
     const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
     const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
-    const [featuredProducts, setFeaturedProducts] = useState([]);
+    const {data: products, isLoading: productsLoading} = useFeaturedProducts({});
+
+    console.log(products);
     
     const sliderSettings = {
         dots: true,
@@ -55,18 +56,6 @@ const HomeContent = (props) => {
         ]
     };
 
-    const getData = async () => {
-        const featuredProductsData = await fetchData('./featured-products.json');
-
-        if(featuredProductsData !== false) {
-            setFeaturedProducts(featuredProductsData.results);
-        }
-    }
-    
-    useEffect(() => {
-        getData();
-    }, []);
-
     return(
         <div className="home">
             <Section sectionName="home__slider" sectionTitle="The Best of the Best...">
@@ -95,9 +84,9 @@ const HomeContent = (props) => {
                         </Slider>
                 }
             </Section>
-            <Section sectionName="home__grid" sectionTitle="Featured Products">
-                <Grid title="Featured Products" products={featuredProducts} />
-                <Link to="/products">View All Products</Link>
+            <Section sectionName="home__grid" sectionTitle="Featured Products">                   
+                <Grid title="Featured Products" products={products.results} isLoading={productsLoading}/>
+                <Link to="/products">View All Products</Link>                        
             </Section>
         </div>
     )

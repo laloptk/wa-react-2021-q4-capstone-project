@@ -1,23 +1,14 @@
 import Card from "./Card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from "react";
 import { getCategoryById } from "../utils/helpers";
 
 const Grid = (props) => {  
-    const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, [props.products]);
-
     return(        
         <div className="grid" > 
             <div className="grid__wrap">
                 {
-                    isLoading 
+                    props.isLoading 
                     ? <FontAwesomeIcon icon={faSpinner} pulse />
                     :
                     <>
