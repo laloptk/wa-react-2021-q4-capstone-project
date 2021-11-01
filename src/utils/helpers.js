@@ -25,3 +25,11 @@ export const getCategoryById = (categoryId, categories) => {
 
     return categoryObj;
 }
+
+export const getCategoryIdBySlugs = (slug, categories) => {
+    const categoryObj = categories.find((category)  => {
+        return category.indexOf(slug);
+    });
+
+    return categoryObj;
+}

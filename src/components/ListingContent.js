@@ -1,45 +1,30 @@
-import { useState, useEffect } from 'react';
 import Grid from "./Grid";
 import Sidebar from "./Sidebar";
 import Pagination from './Pagination';
-import { fetchData } from '../utils/helpers';
+import { useFeaturedCategories } from '../utils/hooks/useFeaturedCategories';
+import { useProducts } from '../utils/hooks/useProducts';
+import useQuery from '../utils/hooks/useQuery';
 
 const ListingContent = (props) => {
-    const [products, setProducts] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [filters, setFilters] = useState([]);
+    // All of this might be better in the main component, ask.
+    const {data: products, isLoading: productsLoading} = useProducts({});
+    const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
 
-    const getData = async () => {
-        const productsData = await fetchData('./products.json');
-        const categoriesData = await fetchData('./product-categories.json');
+    const query = useQuery();
 
-        if(productsData !== false) {
-            setProducts(productsData.results);
-        }
+    console.log(typeof query.get('category'));
 
-        if(categoriesData !== false) {
-            setCategories(categoriesData.results);
-        }
-    }
-
-    useEffect(() => {
-        getData();        
-    }, []);
-
-    const handleFilters = (filter) => {
-        const filterPos = filters.indexOf(filter);
+    const filterData = () => {   
+        const catQuery = query.get('category');
+        let filteredProducts = [];    
         
-        if(filterPos === -1) {
-            setFilters([...filters, filter]);
+        if(catQuery) {
+            filteredProducts = products.results.filter((product) => {
+                return catQuery.split(",").includes(product.data.category.slug);
+            });
         } else {
-            setFilters([...filters.slice(0, filterPos), ...filters.slice(filterPos + 1)]);
-        }        
-    }
-
-    const filterData = () => {        
-        const filteredProducts = products.filter((product) => {
-            return filters.includes(product.data.category.id);
-        });
+            filteredProducts = products.results;
+        }
 
         return filteredProducts;            
     }
@@ -52,14 +37,22 @@ const ListingContent = (props) => {
                 </div>
                 <div className="products-listing__wrap">
                     <div className="products-listing__sidebar">
-                        <Sidebar setCategoriesFilters={handleFilters} categories={ categories }/>
+                        {
+                            !categoriesLoading &&
+                            <Sidebar categories={ categories.results }/>
+                        }                        
                     </div>
                     <div className="products-listing__content">
-                        <Grid 
-                            products={ filters.length > 0 ? filterData() : products } 
-                            categories={ categories }
-                        />
-                        <Pagination start={1} size={5} totalPages={20} />                       
+                        {
+                            !productsLoading &&
+                                <>
+                                    <Grid 
+                                        products={ filterData() } 
+                                        categories={ categories.results }
+                                    />
+                                    <Pagination start={1} size={5} totalPages={20} />
+                                </>
+                        }                       
                     </div>
                 </div>
             </div>

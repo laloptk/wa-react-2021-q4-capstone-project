@@ -1,18 +1,21 @@
+import Button from './Button.js';
+
 const Card = (props) => {
     return(
         <div className="card">
             <div className="card_img">
             <a href={props.href} >
-                <img src={
-                    props.data.mainimage !== undefined 
-                    ? props.data.mainimage.url 
-                    : props.data.main_image.url
-                } 
-                alt={props.data.mainimage !== undefined 
-                    ? props.data.mainimage.alt
-                    : props.data.main_image.alt
-                } 
-            />
+                <img 
+                    src={
+                        props.data.mainimage !== undefined 
+                        ? props.data.mainimage.url 
+                        : props.data.main_image.url
+                    } 
+                    alt={props.data.mainimage !== undefined 
+                        ? props.data.mainimage.alt
+                        : props.data.main_image.alt
+                    } 
+                />
             </a>
             </div>            
             <div className="card__title">
@@ -40,7 +43,11 @@ const Card = (props) => {
                             {`Category: ${props.category.data.name}`}
                         </div> 
                 }
-            </div>
+            </div> 
+            {     
+                props.type === 'category' &&     
+                    <Button link={`/products?category=${props.slugs.join(",")}`} text="Go to Category" btnModifier="btn--ghost" />
+            }
         </div>
     )
 }

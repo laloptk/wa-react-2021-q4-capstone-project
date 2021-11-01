@@ -8,6 +8,7 @@ import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
 import Slider from "react-slick";
 
 const HomeContent = (props) => {
+    // All of this might be better in the main component, ask.
     const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
     const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
     const {data: products, isLoading: productsLoading} = useFeaturedProducts({});
