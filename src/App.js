@@ -7,6 +7,7 @@ import {
 import Header from './components/Header';
 import HomeContent from './components/HomeContent';
 import ListingContent from './components/ListingContent';
+import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route exact path={["/", "/home"]}>
             <HomeContent />
+          </Route>
+          <Route path="/product/:id">
+            <ProductDetail />
           </Route>
           <Route path="*">
             Page Not Found

@@ -5,10 +5,12 @@ const Sidebar = (props) => {
 
     const query = useQuery();
 
-    const handleCatQueries = (newQuery) => {
-        const queryCats = query.get('category').split(",");
-        console.log(queryCats);
 
+    const queryCats = query.get('category');
+    console.log(queryCats);
+
+    const handleCatQueryParams = (newQuery) => {
+        
     }
     
     return (
