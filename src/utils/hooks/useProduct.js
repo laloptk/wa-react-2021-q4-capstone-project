@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
-import useLatestAPI from './useLatestAPI';
+import useLatestAPI from './useLatestApi';
 
 export function useProduct(productId) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();

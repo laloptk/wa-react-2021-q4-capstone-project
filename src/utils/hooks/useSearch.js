@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
-import useLatestAPI from './useLatestAPI';
+import useLatestAPI from './useLatestApi';
 
 export function useSearch(query, page = 1) {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
