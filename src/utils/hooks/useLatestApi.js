@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../constants';
 
 const INITIAL_API_METADATA = { ref: null, isLoading: true };
 
-export function useLatestAPI() {
+const useLatestAPI = () => {
   const [apiMetadata, setApiMetadata] = useState(() => INITIAL_API_METADATA);
 
   useEffect(() => {
@@ -34,3 +34,5 @@ export function useLatestAPI() {
 
   return apiMetadata;
 }
+
+export default useLatestAPI;
