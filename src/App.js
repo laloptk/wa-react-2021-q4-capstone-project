@@ -11,6 +11,7 @@ import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Search from './components/Search';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/product/:id">
             <ProductDetail />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
           <Route path="*">
             Page Not Found

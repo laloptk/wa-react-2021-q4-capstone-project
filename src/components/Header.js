@@ -12,14 +12,9 @@ const Header = (props) => {
                     </div>
                     
                     <div className="header-nav">
-                        <div className="header-nav__main">
-                            <ul>
-                                <li><Link to="/products">Products</Link></li>
-                            </ul>
-                        </div>
                         <div className="product-search">
-                            <form>
-                                <input type="text" />
+                            <form method="get" action="/search">
+                                <input type="text" name="q"/>
                                 <button type="submit">     
                                     {<FontAwesomeIcon icon={faSearch} />}
                                 </button>

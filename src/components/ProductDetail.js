@@ -55,7 +55,7 @@ const ProductDetail = (props) => {
                                                     {
                                                         product.results[0].data.specs.map((spec) => {
                                                             console.log(spec)
-                                                            return <li key={spec.spec_name}>{<><span className="name">{spec.spec_name}</span><span className="value">{spec.spec_value}</span></>}</li>
+                                                            return <li key={spec.spec_name}>{<><div className="name">{spec.spec_name}</div><div className="value">{spec.spec_value}</div></>}</li>
                                                         })
                                                     }
                                                 </ul>
