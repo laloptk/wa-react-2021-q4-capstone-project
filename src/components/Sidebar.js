@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import useQuery from '../utils/hooks/useQuery';
-
 const Sidebar = (props) => {
-
-    const query = useQuery();
-
-
-    const queryCats = query.get('category');
-    console.log(queryCats);
-
-    const handleCatQueryParams = (newQuery) => {
+    
+    const handleClick = (event) => {
+        let classExists = event.target.classList.contains("active");
         
+        if(!classExists) {
+            event.target.classList.add("active");
+        } else {
+            event.target.classList.remove("active");
+        }
+
+        props.setCategoriesFilters(event.target.dataset.id);
     }
     
     return (
@@ -22,12 +21,10 @@ const Sidebar = (props) => {
                             return (
                                 <li 
                                     key={category.id}
+                                    data-id={category.id}
+                                    onClick={ event => handleClick(event) }
                                 >                            
-                                    <Link 
-                                        to={`/products?category=${JSON.stringify(category.slugs.join(","))}`}
-                                    >
-                                        {category.data.name}
-                                    </Link>
+                                    {category.data.name}
                                 </li>
                             )
                         })
