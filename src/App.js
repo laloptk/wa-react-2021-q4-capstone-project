@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/products">
+          <Route exact path={["/products", "/products/:page"]}>
             <ListingContent />
           </Route>
           <Route exact path={["/", "/home"]}>
@@ -28,7 +28,7 @@ function App() {
           <Route path="/product/:id">
             <ProductDetail />
           </Route>
-          <Route path="/search">
+          <Route exact path={["/search", "/search/:page"]}>
             <Search />
           </Route>
           <Route path="*">

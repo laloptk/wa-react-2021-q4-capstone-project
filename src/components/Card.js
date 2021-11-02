@@ -1,10 +1,11 @@
 import Button from './Button.js';
+import { Link } from 'react-router-dom';
 
 const Card = (props) => {
     return(
         <div className="card">
             <div className="card_img">
-            <a href={props.href} >
+            <Link to={`/product/${props.id}`} >
                 <img 
                     src={
                         props.data.mainimage !== undefined 
@@ -16,18 +17,18 @@ const Card = (props) => {
                         : props.data.main_image.alt
                     } 
                 />
-            </a>
+            </Link>
             </div>            
             <div className="card__title">
                 <h3>
                     {
-                        <a href={props.href} >
+                        <Link to={`/product/${props.id}`} >
                             {
                                 props.data.name !== undefined 
                                 ? props.data.name 
                                 : props.data.title
                             }
-                        </a>
+                        </Link>
                     }
                 </h3>             
             </div>
@@ -45,8 +46,9 @@ const Card = (props) => {
                 }
             </div> 
             {     
-                props.type === 'category' &&     
-                    <Button link={`/products?category=${props.slugs.join(",")}`} text="Go to Category" btnModifier="btn--ghost" />
+                props.type === 'category' 
+                ? <Button link={`/products?category=${props.slugs.join(",")}`} text="Go to Category" btnModifier="btn--ghost" />
+                : props.type === 'product' && <Button link={`/product/${props.id}`} text="View Product" btnModifier="btn--ghost" />
             }
         </div>
     )

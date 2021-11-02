@@ -3,19 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getCategoryById } from "../utils/helpers";
 
-const Grid = (props) => {  
+const Grid = ({products, isLoading, categories}) => {  
     return(        
         <div className="grid" > 
             <div className="grid__wrap">
                 {
-                    props.isLoading 
+                    isLoading 
                     ? <FontAwesomeIcon icon={faSpinner} pulse />
                     :
                     <>
                         {
-                            props.products.map((gridItem) => {
-                                const category = props.categories !== null 
-                                ? getCategoryById(gridItem.data.category.id, props.categories)
+                            products.map((gridItem) => {
+                                const category = categories !== null 
+                                ? getCategoryById(gridItem.data.category.id, categories)
                                 : undefined;
                                 return <Card {...gridItem } key={gridItem.id} category={category}/>
                             })

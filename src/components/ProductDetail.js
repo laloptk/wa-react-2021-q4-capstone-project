@@ -3,18 +3,19 @@ import { useParams } from "react-router";
 import Gallery from "./Gallery";
 import Label from "./Label";
 import Button from "./Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const ProductDetail = (props) => {
     const { id } = useParams();
-    const { data: product, isloading: productLoading } = useProduct(id);
-    console.log(product);
+    const { data: product, isLoading: productLoading } = useProduct(id);
     
     return(
         <div className="product">
             <div className="container">
                 {
                     productLoading 
-                    ? 'Loading...'
+                    ? <FontAwesomeIcon icon={faSpinner} pulse />
                     :
                         <>
                             {
@@ -46,6 +47,8 @@ const ProductDetail = (props) => {
                                                 {product.results[0].data.description[0].text}
                                             </p>
                                         </div>
+                                        <input type="number" />
+                                        <Button link="#" text="Add To Cart" btnModifier="btn-cart" />
                                         <div className="product__specs">
                                             <div className="product__specs--header">
                                                 <h3>Specs:</h3>
@@ -65,9 +68,6 @@ const ProductDetail = (props) => {
                             }
                         </>
                 }
-
-                <input type="number" />
-                <Button link="#" text="Add To Cart" btnModifier="btn-cart" />
             </div>
         </div>
     )
