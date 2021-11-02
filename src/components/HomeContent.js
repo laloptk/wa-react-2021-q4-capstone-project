@@ -12,8 +12,6 @@ const HomeContent = (props) => {
     const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
     const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
     const {data: products, isLoading: productsLoading} = useFeaturedProducts({});
-
-    console.log(products);
     
     const sliderSettings = {
         dots: true,

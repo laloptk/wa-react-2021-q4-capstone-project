@@ -29,9 +29,7 @@ const ListingContent = (props) => {
             // I know I should not be using this, but what's the alternative?
             document.querySelector(`[data-id="${categoryBySlug[0].id}"]`).classList.add('active');
         }
-    }, [categories, categoriesLoading, catQuery]);
-
-    console.log(filters);    
+    }, [categories, categoriesLoading, catQuery]);  
 
     const filterData = () => {        
         const filteredProducts = products.results.filter((product) => {

@@ -10,8 +10,6 @@ const Search = (props) => {
     const { page } = useParams();    
     const {data: products, isLoading: productsLoading} = useSearch(searchQuery, page);
 
-    console.log(products.results);
-
     return (
         <div className="search">
             <div className="container">
