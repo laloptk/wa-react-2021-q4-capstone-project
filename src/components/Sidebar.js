@@ -1,6 +1,7 @@
 const Sidebar = (props) => {
-    
+
     const handleClick = (event) => {
+        // This was one of the things Paco told me it has to be done the React way
         let classExists = event.target.classList.contains("active");
         
         if(!classExists) {
