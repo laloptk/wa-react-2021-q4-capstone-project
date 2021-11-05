@@ -9,61 +9,61 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slick";
 
+const SLIDER_SETTINGS = {
+    dots: true,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1        
+};
+
+const CAROUSEL_SETTINGS = {
+    dots: true,
+    infinite: true,
+    lazyLoad: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+    ]
+};
+
 const HomeContent = (props) => {
     // All of this might be better in the main component, ask.
     const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
     const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
     const {data: products, isLoading: productsLoading} = useFeaturedProducts({});
     
-    const sliderSettings = {
-        dots: true,
-        autoplay: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1        
-    };
-
-    const carouselSettings = {
-        dots: true,
-        infinite: true,
-        lazyLoad: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                initialSlide: 2
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-        ]
-    };
-
     return(
         <div className="home">
             <Section sectionName="home__slider" sectionTitle="The Best of the Best...">
                 {
                     bannersLoading
                     ?   <FontAwesomeIcon icon={faSpinner} pulse />
-                    :   <Slider {...sliderSettings}>
+                    :   <Slider {...SLIDER_SETTINGS }>
                             {
                                 banners.results.map((banner) => {
                                     return <Card {...banner } key={banner.id}/>
@@ -76,7 +76,7 @@ const HomeContent = (props) => {
                 {
                     categoriesLoading 
                     ?   <FontAwesomeIcon icon={faSpinner} pulse />
-                    :   <Slider {...carouselSettings}>
+                    :   <Slider {...CAROUSEL_SETTINGS}>
                             {
                                 categories.results.map((carouselItem) => {
                                     return <Card {...carouselItem } key={carouselItem.id}/>

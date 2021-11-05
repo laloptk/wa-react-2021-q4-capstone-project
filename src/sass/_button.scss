@@ -1,27 +1,27 @@
 .btn {
   text-align: center;
-  padding: 10px 20px;
-  display: inline-block;
-  border-radius: 5px;
+  margin-bottom: 35px;
 
   a {
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
     text-decoration: none;
     font-size: 20px;
     font-weight: 700;
   }
 
   &--solid {
-    border: 4px solid $c-black;
-    background-color: $c-black;
     a {
+      border: 4px solid $c-black;
+      background-color: $c-black;
       color: $c-white;
     }
   }
 
   &--ghost {
-    border: 4px solid $c-black;
-
     a {
+      border: 4px solid $c-black;
       color: $c-black;
     }
   }

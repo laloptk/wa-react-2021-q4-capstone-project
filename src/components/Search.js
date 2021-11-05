@@ -13,6 +13,7 @@ const Search = (props) => {
     return (
         <div className="search">
             <div className="container">
+                <h1>{`Search Results for: ${searchQuery}`}</h1>
                 <Grid products={products.results} isLoading={productsLoading}/>
             </div>
             {
