@@ -14,8 +14,8 @@ const Sidebar = ({categories, setCategoriesFilters, activeFilters}) => {
                                 <li 
                                     key={category.id}
                                     data-id={category.id}
-                                    onClick={ event => handleClick(event) }
-                                    className={activeFilters.indexOf(category.id) !== -1 ? 'active' : ''}
+                                    onClick={event => handleClick(event)}
+                                    className={activeFilters.includes(category.id) ? 'active' : ''}
                                 >                            
                                     {category.data.name}
                                 </li>
