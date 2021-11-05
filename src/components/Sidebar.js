@@ -1,16 +1,7 @@
-const Sidebar = (props) => {
+const Sidebar = ({categories, setCategoriesFilters, activeFilters}) => {
 
     const handleClick = (event) => {
-        // This was one of the things Paco told me it has to be done the React way
-        let classExists = event.target.classList.contains("active");
-        
-        if(!classExists) {
-            event.target.classList.add("active");
-        } else {
-            event.target.classList.remove("active");
-        }
-
-        props.setCategoriesFilters(event.target.dataset.id);
+        setCategoriesFilters(event.target.dataset.id);
     }
     
     return (
@@ -18,12 +9,13 @@ const Sidebar = (props) => {
             <div className="sidebar__filters">
                 <ul>
                     {
-                        props.categories.map((category) => {
+                        categories.map((category) => {
                             return (
                                 <li 
                                     key={category.id}
                                     data-id={category.id}
                                     onClick={ event => handleClick(event) }
+                                    className={activeFilters.indexOf(category.id) !== -1 ? 'active' : ''}
                                 >                            
                                     {category.data.name}
                                 </li>

@@ -59,7 +59,11 @@ const ListingContent = (props) => {
                     <div className="products-listing__sidebar">
                         {
                             !categoriesLoading &&
-                                <Sidebar setCategoriesFilters={handleFilters} categories={ categories.results }/>
+                                <Sidebar 
+                                    setCategoriesFilters={handleFilters} 
+                                    categories={ categories.results }
+                                    activeFilters={filters}
+                                />
                         }                        
                     </div>
                     <div className="products-listing__content">
