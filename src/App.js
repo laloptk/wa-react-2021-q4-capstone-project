@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Header from './components/Header';
-import HomeContent from './components/HomeContent';
+import Home from './components/Home';
 import ListingContent from './components/ListingContent';
 import ProductDetail from './components/ProductDetail';
 import Footer from './components/Footer';
@@ -23,7 +23,7 @@ function App() {
             <ListingContent />
           </Route>
           <Route exact path={["/", "/home"]}>
-            <HomeContent />
+            <Home />
           </Route>
           <Route path="/product/:id">
             <ProductDetail />
