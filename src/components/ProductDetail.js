@@ -1,10 +1,20 @@
 import { useProduct } from "../utils/hooks/useProduct";
 import { useParams } from "react-router";
-import Gallery from "./Gallery";
+import Slider from "react-slick";
 import Label from "./Label";
 import Button from "./Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
+const GALLERY_SETTINGS = {
+    dots: true,
+    autoplay: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true    
+};
 
 const ProductDetail = (props) => {
     const { id } = useParams();
@@ -24,7 +34,17 @@ const ProductDetail = (props) => {
                                     <>
                                         <h1>{product.results[0].data.name}</h1>
                                         <div className="product__gallery">
-                                            <Gallery images={product.results[0].data.images} />
+                                            <Slider {...GALLERY_SETTINGS }>
+                                                {
+                                                    product.results[0].data.images.map((item) => {
+                                                        return (
+                                                            <div className="product__gallery--item">
+                                                                <img src={item.image.url} alt=""/>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </Slider>
                                         </div>
                                         <Label text={`Price: US$ ${product.results[0].data.price}`} />
                                         <Label text={`SKU: ${product.results[0].data.sku}`} />
