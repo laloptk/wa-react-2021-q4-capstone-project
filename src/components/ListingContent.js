@@ -25,10 +25,8 @@ const ListingContent = (props) => {
             });
             
             setFilters([categoryBySlug[0].id]);
-
-            // I know I should not be using this, but what's the alternative?
-            document.querySelector(`[data-id="${categoryBySlug[0].id}"]`).classList.add('active');
         }
+
     }, [categories, categoriesLoading, catQuery]);  
 
     const filterData = () => {        

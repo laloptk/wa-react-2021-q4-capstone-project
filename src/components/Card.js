@@ -47,7 +47,7 @@ const Card = (props) => {
             </div> 
             {     
                 props.type === 'category' 
-                ? <Button link={`/products?category=${props.slugs.join(",")}`} text="Go to Category" btnModifier="btn--ghost" />
+                ? <Button link={`/products?category=${props.slugs[0]}`} text="Go to Category" btnModifier="btn--ghost" />
                 : props.type === 'product' && <Button link={`/product/${props.id}`} text="View Product" btnModifier="btn--ghost" />
             }
         </div>

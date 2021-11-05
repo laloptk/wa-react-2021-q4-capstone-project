@@ -5,6 +5,8 @@ import Section from "./Section";
 import { useFeaturedBanners } from "../utils/hooks/useFeaturedBanners";
 import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
 import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Slider from "react-slick";
 
 const HomeContent = (props) => {
@@ -60,7 +62,7 @@ const HomeContent = (props) => {
             <Section sectionName="home__slider" sectionTitle="The Best of the Best...">
                 {
                     bannersLoading
-                    ?   "Loading..."
+                    ?   <FontAwesomeIcon icon={faSpinner} pulse />
                     :   <Slider {...sliderSettings}>
                             {
                                 banners.results.map((banner) => {
@@ -73,7 +75,7 @@ const HomeContent = (props) => {
             <Section sectionName="home__carousel" sectionTitle="Featured Categories">
                 {
                     categoriesLoading 
-                    ? "Loading..."
+                    ?   <FontAwesomeIcon icon={faSpinner} pulse />
                     :   <Slider {...carouselSettings}>
                             {
                                 categories.results.map((carouselItem) => {
