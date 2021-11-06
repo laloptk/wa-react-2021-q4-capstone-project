@@ -53,9 +53,9 @@ const CAROUSEL_SETTINGS = {
 
 const HomeContent = (props) => {
     // All of this might be better in the main component, ask.
-    const {data: banners, isLoading: bannersLoading} = useFeaturedBanners({});
-    const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
-    const {data: products, isLoading: productsLoading} = useFeaturedProducts({});
+    const {banners, bannersLoading} = useFeaturedBanners();
+    const {categories, categoriesLoading} = useFeaturedCategories({});
+    const {products, productsLoading} = useFeaturedProducts({});
     
     return(
         <div className="home">

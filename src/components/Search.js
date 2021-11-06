@@ -8,17 +8,17 @@ const Search = (props) => {
     const query = useQuery();
     const searchQuery = query.get('q');
     const { page } = useParams();    
-    const {data: products, isLoading: productsLoading} = useSearch(searchQuery, page);
+    const {search, searchLoading} = useSearch(searchQuery, page);
 
     return (
         <div className="search">
             <div className="container">
                 <h1>{`Search Results for: ${searchQuery}`}</h1>
-                <Grid products={products.results} isLoading={productsLoading}/>
+                <Grid products={search.results} isLoading={searchLoading}/>
             </div>
             {
-                !productsLoading &&
-                    <Pagination size={5} pageSlug="search" currentPage={page ? parseInt(page) : 1} total={products.total_pages}/>
+                !searchLoading &&
+                    <Pagination size={5} pageSlug="search" currentPage={page ? parseInt(page) : 1} total={search.total_pages}/>
             }
         </div>
     )

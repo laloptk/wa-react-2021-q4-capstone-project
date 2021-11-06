@@ -12,8 +12,8 @@ const ListingContent = (props) => {
     // This whole component is rerendering too many times, why? [Probably I can use memoization hooks and custom hooks]
     // All fetching hooks are too similar between them, I feel like I'm breaking DRY
     const { page } = useParams();
-    const {data: products, isLoading: productsLoading} = useProducts(page);
-    const {data: categories, isLoading: categoriesLoading} = useFeaturedCategories({});
+    const {products, productsLoading} = useProducts(page);
+    const {categories, categoriesLoading} = useFeaturedCategories();
     const [filters, setFilters] = useState([]);
     const query = useQuery();
     const catQuery = query.get('category');    

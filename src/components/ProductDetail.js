@@ -18,7 +18,7 @@ const GALLERY_SETTINGS = {
 
 const ProductDetail = (props) => {
     const { id } = useParams();
-    const { data: product, isLoading: productLoading } = useProduct(id);
+    const { product, productLoading } = useProduct(id);
     
     return(
         <div className="product">
