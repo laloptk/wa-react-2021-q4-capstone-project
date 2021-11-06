@@ -1,18 +1,9 @@
 import Card from "./Card";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from "react";
 import { getCategoryById } from "../utils/helpers";
 
-const Grid = (props) => {  
-    const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, [props.products]);
-
+const Grid = ({products, isLoading, categories}) => {  
     return(        
         <div className="grid" > 
             <div className="grid__wrap">
@@ -22,9 +13,9 @@ const Grid = (props) => {
                     :
                     <>
                         {
-                            props.products.map((gridItem) => {
-                                const category = props.categories !== null 
-                                ? getCategoryById(gridItem.data.category.id, props.categories)
+                            products.map((gridItem) => {
+                                const category = categories !== null 
+                                ? getCategoryById(gridItem.data.category.id, categories)
                                 : undefined;
                                 return <Card {...gridItem } key={gridItem.id} category={category}/>
                             })

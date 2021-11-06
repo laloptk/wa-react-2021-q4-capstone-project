@@ -1,16 +1,10 @@
-const Button = (props) => {
-    const handleClick = (e) => {
-        e.preventDefault();
-        window.location.href = e.target.href !== undefined 
-            ? e.target.href 
-            : window.location.protocol + "//" + window.location.host + "/";
-    }
-
+import { Link } from "react-router-dom";
+const Button = ({link, text, btnModifier}) => {
     return (
-        <div className={`btn ${props.btnModifier}`}>
-            <a href={props.link} onClick={event => handleClick(event)}>
-                {props.text}
-            </a>
+        <div className={`btn ${btnModifier}`}>
+            <Link to={link}>
+                {text}
+            </Link>
         </div>
    )
 }

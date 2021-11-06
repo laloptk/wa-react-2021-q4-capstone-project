@@ -1,15 +1,7 @@
-const Sidebar = (props) => {
+const Sidebar = ({categories, setCategoriesFilters, activeFilters}) => {
 
     const handleClick = (event) => {
-        let classExists = event.target.classList.contains("active");
-        
-        if(!classExists) {
-            event.target.classList.add("active");
-        } else {
-            event.target.classList.remove("active");
-        }
-
-        props.setCategoriesFilters(event.target.dataset.id);
+        setCategoriesFilters(event.target.dataset.id);
     }
     
     return (
@@ -17,12 +9,13 @@ const Sidebar = (props) => {
             <div className="sidebar__filters">
                 <ul>
                     {
-                        props.categories.map((category) => {
+                        categories.map((category) => {
                             return (
                                 <li 
                                     key={category.id}
                                     data-id={category.id}
-                                    onClick={ event => handleClick(event) }
+                                    onClick={event => handleClick(event)}
+                                    className={activeFilters.includes(category.id) ? 'active' : ''}
                                 >                            
                                     {category.data.name}
                                 </li>
