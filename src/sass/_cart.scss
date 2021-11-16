@@ -1,0 +1,41 @@
+.cart {
+  table {
+    width: 100%;
+    thead {
+      width: 100%;
+      tr {
+        width: 100%;
+
+        th {
+          width: 20%;
+          text-align: center;
+          border-bottom: 1px solid $c-black;
+          border-right: 1px solid $c-black;
+          padding: 15px;
+          background-color: $c-lightGray;
+        }
+      }
+    }
+
+    tbody {
+      width: 100%;
+      tr {
+        width: 100%;
+
+        td {
+          width: 20%;
+          text-align: center;
+          border-bottom: 1px solid $c-black;
+          border-right: 1px solid $c-black;
+          padding: 15px;
+
+          img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
