@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { useProduct } from "../utils/hooks/useProduct";
 import { useParams } from "react-router";
 import Slider from "react-slick";
 import Label from "./Label";
-import Button from "./Button";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from "react-redux";
+import { addCartProduct } from "../redux/slices/CartSlice";
 
 const GALLERY_SETTINGS = {
     dots: true,
@@ -16,9 +18,16 @@ const GALLERY_SETTINGS = {
     centerMode: true    
 };
 
-const ProductDetail = (props) => {
+const ProductDetail = () => {
+    const [itemQty, setItemQTY] = useState(1);
     const { id } = useParams();
     const { product, productLoading } = useProduct(id);
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (item) => {
+        dispatch(addCartProduct({item}));
+        setItemQTY(1);
+    }
     
     return(
         <div className="product">
@@ -67,8 +76,19 @@ const ProductDetail = (props) => {
                                                 {product.results[0].data.description[0].text}
                                             </p>
                                         </div>
-                                        <input type="number" />
-                                        <Button link="#" text="Add To Cart" btnModifier="btn-cart" />
+                                        <input 
+                                            type="number" 
+                                            onChange={(event) => setItemQTY(parseInt(event.target.value))}
+                                            value={itemQty >= 1 ? itemQty : 1} 
+                                        />
+                                        <button 
+                                            onClick={ () => handleAddToCart({[product.results[0].id]: {
+                                                qty: itemQty,
+                                                data: product.results[0].data
+                                            }})}
+                                        >
+                                            Add To Cart
+                                        </button>
                                         <div className="product__specs">
                                             <div className="product__specs--header">
                                                 <h3>Specs:</h3>

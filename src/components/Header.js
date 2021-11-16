@@ -1,8 +1,9 @@
+import ShoppingCartIcon from './ShoppingCartIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-const Header = (props) => {  
+const Header = () => { 
     return (
         <header className="header">
             <div className="container">
@@ -20,9 +21,7 @@ const Header = (props) => {
                                 </button>
                             </form>
                         </div>
-                        <div className="cart-icon">
-                            <FontAwesomeIcon icon={faShoppingCart} />
-                        </div>
+                        <ShoppingCartIcon />
                     </div>
                 </div>
             </div>

@@ -1,11 +1,11 @@
-const Section = (props) => {
+const Section = ({sectionName, sectionTitle, children}) => {
     return(
-        <section className={`section ${props.sectionName}`}>
+        <section className={`section ${sectionName}`}>
             <div className="container">
                 <div className="section__header">
-                    <h2>{props.sectionTitle}</h2>
+                    <h2>{sectionTitle}</h2>
                 </div>
-                {props.children}
+                {children}
             </div>            
         </section>
     )
