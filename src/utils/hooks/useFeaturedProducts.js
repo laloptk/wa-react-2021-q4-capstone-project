@@ -5,8 +5,8 @@ export function useFeaturedProducts() {
     slug: '/documents/search',
     queryParams: {
         q: [
-          '[[at(document.type, "product")]]',
-          '[[at(document.tags, ["Featured"])]]'
+          encodeURIComponent('[[at(document.type, "product")]]'),
+          encodeURIComponent('[[at(document.tags, ["Featured"])]]')
         ],
         lang: 'en-us',
         pageSize: '16'

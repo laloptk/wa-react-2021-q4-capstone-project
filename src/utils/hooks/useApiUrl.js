@@ -11,7 +11,7 @@ const useApiUrl = (urlParts) => {
             let currentParams = '';
             
             if(Array.isArray(params[key])) {
-                currentParams = `&${key}=${encodeURIComponent(params[key].join(`&${key}=`))}`;
+                currentParams = `&${key}=${params[key].join(`&${key}=`)}`;
             } else if(typeof params[key] === 'string') {
                 currentParams = `&${key}=${params[key]}`;
             }

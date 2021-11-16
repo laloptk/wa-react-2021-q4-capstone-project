@@ -5,7 +5,7 @@ export function useProduct(productId) {
     slug: '/documents/search',
     queryParams: {
         q: [
-          `[[:d = at(document.id,"${productId}") ]]`
+          encodeURIComponent(`[[:d = at(document.id,"${productId}") ]]`)
         ],
         lang: 'en-us',
         pageSize: '30'

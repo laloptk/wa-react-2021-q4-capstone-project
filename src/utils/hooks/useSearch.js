@@ -5,8 +5,8 @@ export function useSearch(query, page = 1) {
     slug: '/documents/search',
     queryParams: {
         q: [
-          '[[at(document.type, "product")]]',
-          `[[fulltext(document, "${query}")]]`
+          encodeURIComponent('[[at(document.type, "product")]]'),
+          encodeURIComponent(`[[fulltext(document, "${query}")]]`)
         ],
         page: page,
         lang: 'en-us',

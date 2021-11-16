@@ -5,7 +5,7 @@ export function useProducts(currentPage = 1) {
     slug: '/documents/search',
     queryParams: {
         q: [
-          '[[at(document.type, "product")]]'
+          encodeURIComponent('[[at(document.type, "product")]]')
         ],
         page: currentPage,
         lang: 'en-us',

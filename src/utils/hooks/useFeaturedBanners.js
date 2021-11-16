@@ -5,7 +5,7 @@ export function useFeaturedBanners() {
     slug: '/documents/search',
     queryParams: {
         q: [
-            '[[at(document.type, "banner")]]'
+          encodeURIComponent('[[at(document.type, "banner")]]')
         ],
         lang: 'en-us',
         pageSize: '5'

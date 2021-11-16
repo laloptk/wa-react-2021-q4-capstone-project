@@ -5,7 +5,7 @@ export function useFeaturedCategories() {
     slug: '/documents/search',
     queryParams: {
         q: [
-          '[[at(document.type, "category")]]'
+          encodeURIComponent('[[at(document.type, "category")]]')
         ],
         lang: 'en-us',
         pageSize: '30'
