@@ -36,7 +36,7 @@ const Checkout = () => {
                         <tbody>
                             {
                                 Object.keys(products).map((product_id, index) => {                                   
-                                    return <tr>
+                                    return <tr key={product_id}>
                                         <td>
                                             {products[product_id].data.name}
                                         </td>

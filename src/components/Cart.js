@@ -27,8 +27,7 @@ const Cart = () => {
                             <tbody>
                                 {
                                     Object.keys(products).map((product_id) => {
-                                        return  <>
-                                                <tr key={product_id}>
+                                        return  <tr key={product_id}>
                                                     <td><img src={products[product_id].data.mainimage.url} alt="" /></td>
                                                     <td>{products[product_id].data.name}</td>
                                                     <td>{products[product_id].data.price}</td>
@@ -51,7 +50,6 @@ const Cart = () => {
                                                         </button>
                                                     </td>
                                                 </tr>
-                                            </>
                                     })
                                 }
                             </tbody>

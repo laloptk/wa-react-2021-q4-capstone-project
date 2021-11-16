@@ -47,7 +47,7 @@ const ProductDetail = () => {
                                                 {
                                                     product.results[0].data.images.map((item) => {
                                                         return (
-                                                            <div className="product__gallery--item">
+                                                            <div className="product__gallery--item" key={item.image.url}>
                                                                 <img src={item.image.url} alt=""/>
                                                             </div>
                                                         )
