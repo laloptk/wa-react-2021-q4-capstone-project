@@ -8,7 +8,6 @@ import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
 import { useFeaturedProducts } from "../utils/hooks/useFeaturedProducts";
 
 const Home = (props) => {
-    // All of this might be better in the main component, ask.
     const {banners, bannersLoading} = useFeaturedBanners();
     const {categories, categoriesLoading} = useFeaturedCategories();
     const {products, productsLoading} = useFeaturedProducts();

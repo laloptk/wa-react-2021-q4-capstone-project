@@ -31,7 +31,7 @@ const useApiUrl = (urlParts) => {
 
         setApiUrl(`${API_BASE_URL}${urlParts.slug}?ref=${apiRef}${qParams}`);
 
-    }, [apiRef, isApiMetadataLoading, urlParts])    
+    }, [apiRef, isApiMetadataLoading, urlParts])
 
     return {apiUrl, isLoading: isApiMetadataLoading};  
 }

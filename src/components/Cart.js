@@ -12,7 +12,8 @@ const Cart = () => {
         <div className="cart">
             <Section sectionName="cart__items" sectionTitle="Shopping Cart" >
                 {
-                    products &&
+                    products.length > 0
+                    ?
                         <table>
                             <thead>
                             <tr>
@@ -63,6 +64,7 @@ const Cart = () => {
                             </tr>
                         </tfoot>
                         </table>
+                    : <h2>There are no products in the Cart</h2>
             }
             </Section>
             <Link to="/checkout" >Proceed to Chackout</Link>
