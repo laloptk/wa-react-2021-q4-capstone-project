@@ -1,54 +1,34 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'; 
-import Sidebar from '../components/Sidebar';
+import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
+import { useProducts } from "../utils/hooks/useProducts";
+import ListingContent from '../components/ListingContent';
 import categoriesData from '../../public/product-categories.json';
+import productsData from '../../public/products.json';
 
-const server = setupServer( 
-    rest.get('/featured-categories', (req, res, context) => {
-        return res(context.json({
-            categories: categoriesData
-        }))
-    })
-);
+jest.mock("../utils/hooks/useFeaturedCategories", () => ({
+    useFeaturedCategories: jest.fn(() => ({categories: null, categoriesLoading: true}))
+})).mock("../utils/hooks/useProducts", () => ({
+    useProducts: jest.fn(() => ({products: null, productsLoading: true}))
+}));
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+beforeEach(() => {
+    useFeaturedCategories.mockReturnValue({categories: categoriesData, categoriesLoading: false});
+    useProducts.mockReturnValue({products: productsData, productsLoading: false});
+});
 
-
-
-test('Get featured categories data', async () => {    
-    const filters = [];
-
-    const setFilters = (id) => {
-        const filterExists = filters.indexOf(id);
-        if(filterExists === -1) {
-            filters.push(id);
-        } else {
-            filters.splice(filterExists, 1);
-        }
-    }
-    
-    await fetch('/featured-categories')
-        .then( res => {
-            return res.json();
-        })
-        .then(data => {
-            render(<Router><Sidebar categories={data.categories.results} setCategoriesFilters={setFilters} activeFilters={[ 'YWHx-xIAAC0Ayj7i' ]} /></Router>);
-        });
-    
-
-    await waitFor(() => {        
-        const catTitle = screen.getByText('Bed & Bath');
-        expect(catTitle).toBeInTheDocument();
-        fireEvent.click(screen.getByText('Bed & Bath'));
-        console.log(filters);
-        expect(catTitle.classList.contains('active')).toBeTruthy();
-
-        
+test('Check sidebar categories are rendering and that the filter buttons work', async () => {
+    const furnitureProducts = productsData.results.filter((product) => {
+        return product.data.category.slug === 'furniture';
     });
+    console.log(furnitureProducts.length);
+    render(<Router><ListingContent /></Router>);
+    const filterBtn = screen.getByText('Furniture');
+    expect(filterBtn).toBeInTheDocument();
+    fireEvent.click(filterBtn);
+    const catProducts = screen.getAllByText('Category: Furniture');
+    //Check that the number of rendered products is equal to the lenght of the data passed
+    expect(catProducts.length).toBe(furnitureProducts.length);
 });

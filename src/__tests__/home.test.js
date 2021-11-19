@@ -26,7 +26,7 @@ beforeEach(() => {
 
 describe("Test the different Home components are rendering", () => {
     
-    it('The SimpleSlider with featured banners render in Home', async () => { 
+    it('The SimpleSlider with featured banners render', async () => { 
         render(<Router><Home /></Router>);           
         const bannerImage = screen.getAllByAltText('AMAZING FINISHES - BEDROOM');
         expect(bannerImage[0]).toBeInTheDocument();
