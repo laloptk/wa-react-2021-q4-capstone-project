@@ -12,9 +12,9 @@ const ListingContent = (props) => {
     // This whole component is rerendering too many times, why? [Probably I can use memoization hooks and custom hooks]
     // All fetching hooks are too similar between them, I feel like I'm breaking DRY
     const { page } = useParams();
-    const {products, productsLoading} = useProducts(page);
-    const {categories, categoriesLoading} = useFeaturedCategories();
     const [filters, setFilters] = useState([]);
+    const {products, productsLoading} = useProducts(page, filters);
+    const {categories, categoriesLoading} = useFeaturedCategories();    
     const query = useQuery();
     const catQuery = query.get('category');    
 
@@ -27,7 +27,7 @@ const ListingContent = (props) => {
             setFilters([categoryBySlug[0].id]);
         }
 
-    }, [categories, categoriesLoading, catQuery]);  
+    }, [categories, categoriesLoading, catQuery]); 
 
     const filterData = () => {        
         const filteredProducts = products.results.filter((product) => {
@@ -72,7 +72,7 @@ const ListingContent = (props) => {
                                         products={ filters.length > 0 ? filterData() : products.results } 
                                         categories={ categories.results }
                                     />
-                                    <Pagination pageSlug="products" currentPage={page ? parseInt(page) : 1} size={5} total={products.total_pages} />
+                                    <Pagination current={products.page} total={products.total_pages}/>
                                 </>
                         }                       
                     </div>

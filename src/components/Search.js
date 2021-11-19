@@ -10,15 +10,22 @@ const Search = (props) => {
     const { page } = useParams();    
     const {search, searchLoading} = useSearch(searchQuery, page);
 
+    console.log(search.page);
+
     return (
         <div className="search">
             <div className="container">
                 <h1>{`Search Results for: ${searchQuery}`}</h1>
-                <Grid products={search.results} isLoading={searchLoading}/>
+                {
+                    !searchLoading && search.results.length > 0 
+                    ? <Grid products={search.results} isLoading={searchLoading}/>
+                    : <h2>There are no results for this search term.</h2>
+                }
+                
             </div>
             {
                 !searchLoading &&
-                    <Pagination size={5} pageSlug="search" currentPage={page ? parseInt(page) : 1} total={search.total_pages}/>
+                    <Pagination current={search.page} total={search.total_pages}/>
             }
         </div>
     )

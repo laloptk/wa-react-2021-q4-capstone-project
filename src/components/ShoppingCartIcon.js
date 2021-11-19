@@ -8,7 +8,10 @@ const ShoppingCartIcon = () => {
 
     return(
         <div className="cart-icon">
-            <div className="items-num">{totalCartItems > 0 ? totalCartItems : ""}</div>
+            {
+                totalCartItems > 0 &&
+                <div className="items-num">{totalCartItems}</div>
+            }
             <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link>
         </div>
     )

@@ -21,14 +21,7 @@ afterAll(() => server.close());
 
 test('Get featured categories data', async () => {    
     
-    await fetch('/featured-categories')
-        .then( res => {
-            return res.json();
-        })
-        .then(data => {
-            render(<Router><Carousel items={data.categories} isLoading={false} /></Router>);
-        });
-
+    
     await waitFor(() => {
         const testImgUrl = 'https://images.prismic.io/wizeline-academy/5df875b5-3e43-4cf0-97b9-06ed73ed6d9b_sanibell-bv-530lZQXMKGw-unsplash-web+%281%29.jpg?auto=compress,format&rect=0,24,1920,1231&w=621&h=398';
         const catImage = screen.getAllByAltText('Bath');

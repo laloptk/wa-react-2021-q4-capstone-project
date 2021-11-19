@@ -20,6 +20,34 @@
     }
   }
 
+  .add-to-cart {
+    input {
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    button {
+      background-color: $c-black;
+      color: $c-white;
+      font-size: 16px;
+      border: none;
+      height: 40px;
+      padding-right: 15px;
+      padding-left: 15px;
+      border-radius: 5px;
+    }
+
+    button[disabled],
+    button:disabled {
+      opacity: 0.6;
+    }
+  }
+
+  .cart__notice {
+    color: red;
+    margin-top: 10px;
+  }
+
   &__specs {
     ul {
       list-style-type: none;
