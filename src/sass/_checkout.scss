@@ -74,4 +74,15 @@
       }
     }
   }
+
+  &-btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    .btn {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Checkout = () => {
     const products = useSelector(state => state.cartProducts.list);
@@ -44,7 +44,7 @@ const Checkout = () => {
                                             {products[product_id].qty}
                                         </td>
                                         <td>
-                                            {products[product_id].qty * products[product_id].data.price}
+                                            {`US$${(products[product_id].qty * products[product_id].data.price).toFixed(2)}`}
                                         </td>
                                     </tr>
                                 })
@@ -60,13 +60,9 @@ const Checkout = () => {
                     </table>
                 </div>
             </div>
-            <div className="container">
-                <Link to="/">
-                    Place Order
-                </Link>
-                <Link to="/cart">
-                    Go Back to Cart
-                </Link>
+            <div className="container checkout-btns">
+                <Button link="/" text="Place Order" btnModifier="btn--ghost" />
+                <Button link="/cart" text="Go Back to Cart" btnModifier="btn--ghost" />
             </div>
         </div>
     )

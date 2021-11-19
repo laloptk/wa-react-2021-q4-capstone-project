@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeCartProduct, modifyProductQuantity } from "../redux/slices/CartSlice";
 import Section from "./Section";
-import { Link } from "react-router-dom";
+import Button from "./Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Cart = () => {
     const products = useSelector(state => state.cartProducts.list);
@@ -30,8 +32,9 @@ const Cart = () => {
         <div className="cart">
             <Section sectionName="cart__items" sectionTitle="Shopping Cart" >
                 {
-                    /*products.length > 0
-                    ?*/
+                    
+                    Object.keys(products).length > 0
+                    ?
                         <table>
                             <thead>
                             <tr>
@@ -49,26 +52,28 @@ const Cart = () => {
                                         return  <tr key={product_id}>
                                                     <td><img src={products[product_id].data.mainimage.url} alt="" /></td>
                                                     <td>{products[product_id].data.name}</td>
-                                                    <td>{products[product_id].data.price}</td>
+                                                    <td>{`US$${products[product_id].data.price.toFixed(2)}`}</td>
                                                     <td>
-                                                        <div className="plus-btn">
-                                                            <button onClick={() => handleQtyIncrease(product_id)}>+</button>
-                                                        </div>
-                                                        <input 
-                                                            readOnly
-                                                            type="text" 
-                                                            value={products[product_id].qty}
-                                                        />
-                                                        <div className="minus-btn">
-                                                            <button onClick={() => handleQtyDecrease(product_id)}>-</button>
+                                                        <div class="qty-container">
+                                                            <div className="plus-btn">
+                                                                <button onClick={() => handleQtyIncrease(product_id)}>+</button>
+                                                            </div>
+                                                            <input 
+                                                                readOnly
+                                                                type="text" 
+                                                                value={products[product_id].qty}
+                                                            />
+                                                            <div className="minus-btn">
+                                                                <button onClick={() => handleQtyDecrease(product_id)}>-</button>
+                                                            </div>
                                                         </div>
                                                     </td>
-                                                    <td>{products[product_id].data.price * products[product_id].qty}</td>
+                                                    <td>{`US$${(products[product_id].data.price * products[product_id].qty).toFixed(2)}`}</td>
                                                     <td>
-                                                        <button 
+                                                        <button className="btn-close"
                                                             onClick={() => dispatch(removeCartProduct({product_id}))}
                                                         >
-                                                                Remove Product
+                                                            <FontAwesomeIcon icon={faTimes} />
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -85,10 +90,13 @@ const Cart = () => {
                             </tr>
                         </tfoot>
                         </table>
-                    //: <h2>There are no products in the Cart</h2>
+                    : <h2>Your Cart is Empty</h2>
             }
             </Section>
-            <Link to="/checkout" >Proceed to Checkout</Link>
+            {
+                Object.keys(products).length > 0 &&
+                    <Button link="/checkout" text="Proceed to Checkout" btnModifier="btn--ghost">Proceed to Checkout</Button>
+            }
         </div>
     )
 }
