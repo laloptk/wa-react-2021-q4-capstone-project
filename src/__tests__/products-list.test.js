@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import { useFeaturedCategories } from "../utils/hooks/useFeaturedCategories";
 import { useProducts } from "../utils/hooks/useProducts";
 import ListingContent from '../components/ListingContent';
-import categoriesData from '../../public/product-categories.json';
+import categoriesData from '../../mocks/en-us/product-categories.json';
 import productsData from '../../public/products.json';
 import productsData2 from '../../public/products2.json';
 import productsData3 from '../../public/products3.json';

@@ -79,16 +79,20 @@ const ProductDetail = () => {
                                         <input 
                                             type="number" 
                                             onChange={(event) => setItemQTY(parseInt(event.target.value))}
-                                            value={itemQty >= 1 ? itemQty : 1} 
+                                            value={itemQty >= 1 ? itemQty : 1}
                                         />
                                         <button 
                                             onClick={ () => handleAddToCart({[product.results[0].id]: {
                                                 qty: itemQty,
                                                 data: product.results[0].data
                                             }})}
+                                            disabled={itemQty > product.results[0].data.stock}
                                         >
                                             Add To Cart
                                         </button>
+                                        <div className="cart__notice">
+                                            {itemQty > product.results[0].data.stock ? "There are not enough products in stock" : ""}
+                                        </div>
                                         <div className="product__specs">
                                             <div className="product__specs--header">
                                                 <h3>Specs:</h3>

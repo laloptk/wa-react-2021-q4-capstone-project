@@ -7,13 +7,31 @@ const Cart = () => {
     const products = useSelector(state => state.cartProducts.list);
     const totalPrice = useSelector(state => state.cartProducts.totalPrice);
     const dispatch = useDispatch();
+
+    const handleQtyIncrease = (product_id) => {
+        if(products[product_id].qty < products[product_id].data.stock) {
+            dispatch(modifyProductQuantity({
+                product_id,
+                qty: products[product_id].qty + 1
+            }))
+        }
+    }
+
+    const handleQtyDecrease = (product_id) => {
+        if(products[product_id].qty > 1) {
+            dispatch(modifyProductQuantity({
+                product_id,
+                qty: products[product_id].qty - 1
+            }))
+        }
+    }
     
     return (
         <div className="cart">
             <Section sectionName="cart__items" sectionTitle="Shopping Cart" >
                 {
-                    products.length > 0
-                    ?
+                    /*products.length > 0
+                    ?*/
                         <table>
                             <thead>
                             <tr>
@@ -33,14 +51,17 @@ const Cart = () => {
                                                     <td>{products[product_id].data.name}</td>
                                                     <td>{products[product_id].data.price}</td>
                                                     <td>
+                                                        <div className="plus-btn">
+                                                            <button onClick={() => handleQtyIncrease(product_id)}>+</button>
+                                                        </div>
                                                         <input 
-                                                            type="number" 
-                                                            onChange={(event) => dispatch(modifyProductQuantity({
-                                                                product_id,
-                                                                qty: event.target.value
-                                                            }))}
+                                                            readOnly
+                                                            type="text" 
                                                             value={products[product_id].qty}
                                                         />
+                                                        <div className="minus-btn">
+                                                            <button onClick={() => handleQtyDecrease(product_id)}>-</button>
+                                                        </div>
                                                     </td>
                                                     <td>{products[product_id].data.price * products[product_id].qty}</td>
                                                     <td>
@@ -64,7 +85,7 @@ const Cart = () => {
                             </tr>
                         </tfoot>
                         </table>
-                    : <h2>There are no products in the Cart</h2>
+                    //: <h2>There are no products in the Cart</h2>
             }
             </Section>
             <Link to="/checkout" >Proceed to Checkout</Link>
