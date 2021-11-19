@@ -67,7 +67,7 @@ const Cart = () => {
                     : <h2>There are no products in the Cart</h2>
             }
             </Section>
-            <Link to="/checkout" >Proceed to Chackout</Link>
+            <Link to="/checkout" >Proceed to Checkout</Link>
         </div>
     )
 }
